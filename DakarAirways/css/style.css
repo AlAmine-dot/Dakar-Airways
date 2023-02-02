@@ -1,0 +1,1386 @@
+/* ############ BASIC CONFIGURATIONS ########## */
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700&display=swap');
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+    font-family: "Nunito", sans-serif;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    transition: all .2s linear;
+  }
+
+h1 #search-result{
+    color: var(--green);
+}
+
+  html{
+      /* je viens de découvrir la technique du 62,5% et il est très intéressant */
+      /* regarde la petite vidéo de "Le Designer Du Web" à ce sujet */
+      font-size: 62.5%;
+      overflow-x: hidden;
+      /* Définit l'espace au niveau du défilement des scroll
+      teste les valeurs pour mieux comprendre après */
+      scroll-padding-top: 5.5rem;
+      scroll-behavior: smooth;
+
+ }
+
+ section{
+     padding: 2rem 2%;
+ }
+
+ section:nth-child(even){
+     background: #eee;
+ }
+
+ .btn{
+     margin-top: 1rem;
+     display: inline-block;
+     font-size: 1.7rem;
+     color:  #fff;
+     background: var(--darkblue);
+     border-radius: .5rem;
+     cursor: pointer;
+     padding: .8rem 3rem;
+ }
+
+ .btn:hover{
+     background-color: var(--lightblue);
+     letter-spacing: .1rem;
+ }
+
+ .highlight-btn{
+    display: inline-block;
+    font-size: 1.7rem;
+    color:  #fff;
+    background: var(--darkblue);
+    border-radius: .5rem;
+    cursor: pointer;
+    padding: .8rem 3rem;
+    background-color:  var(--gold);
+    color: var(--darkblue);
+}
+
+.highlight-btn:hover{
+    background-color:  var(--darkblue);
+    color: #fff;
+    letter-spacing: .1rem;
+
+ }
+  
+  ::before,::after{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* --- root variables */
+  
+  :root{
+      --lightblue: #267090;
+      --darkblue: #00223B;
+      --light-color: #666;
+      --gold: #fff279;
+      --green: #27ae60;
+      --box-shadow: 0rem 1rem 20px 0px rgb(0 0 0 / 10%);
+  }
+
+  /* ############ HEADER AND NAVBAR ########## */
+
+  header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: #fff;
+    padding: 1rem 7%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 1000;
+    box-shadow: var(--box-shadow);
+}
+
+header .logo{
+    color: var(--darkblue);
+    font-size: 1.8rem;
+    font-weight: bolder;
+}
+
+header .logo i{
+      color: var(--lightblue);
+}
+header .highlight-btn i{
+    margin-left: .2rem;
+}
+
+header .navbar a{
+    font-size: 1.7rem;
+    /* très bizarre les border-radius et padding en rem tho */
+    border-radius: .5rem;
+    padding: .5rem 1.5rem;
+    color: var(--light-color);
+    z-index: 1000;
+}
+
+header .navbar a.active,header .navbar a:hover{
+    color: #fff;
+    background-color: var(--lightblue);
+}
+
+header .icons i,
+header .icons a{
+    cursor: pointer;
+    margin: 0 0 0 .5rem;
+    height: 4.5rem;
+    line-height: 4.5rem;
+    width: 4.5rem;
+    text-align: center;
+    font-size: 1.7rem;
+    color: var(--darkblue);
+    border-radius: 50%;
+    background-color: #eee;
+}
+
+/* header .login a{
+    margin: 0;
+    background-color:  var(--gold);
+    color: var(--darkblue);
+}
+
+header .login a:hover{
+    background-color:  var(--darkblue);
+    color: #fff;
+} */
+
+header .icons i:hover,
+header .icons a:hover{
+    color: #fff;
+    background-color: var(--lightblue);
+    transform: rotate(360deg);
+}
+
+header .icons #menu-bars{
+    display: none;
+}
+
+
+/* ############ SEARCH FORM ########## */
+
+#search-form{
+    position: fixed;
+    top: -110%;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 1004;
+    background: rgba(0,0,0,.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 1rem;
+}
+
+#search-form.active{
+    top: 0;
+}
+
+#search-form #search-box{
+    width: 50rem;
+    border-bottom: .1rem solid #fff;
+    padding: 1rem 0;
+    color: #fff;
+    font-size: 3rem;
+    text-transform: none;
+    background: none;
+}
+
+#search-form #search-box::placeholder{
+    color: #eee;
+}
+
+#search-form #search-box::-webkit-search-cancel-button{
+  /* -webkit-appearance: none; */
+  display: none;
+}
+
+#search-form label{
+    color: #fff;
+    cursor: pointer;
+    font-size: 3rem;
+}
+
+#search-form label:hover{
+  color: var(--lighblue);
+
+}
+
+#search-form #close{
+    position: absolute;
+    color: #fff;
+    cursor: pointer;
+    top: 2rem;
+    right: 3rem;
+    font-size: 5rem;
+}
+
+/* ############ LOGIN MODAL CONTENT ########## */
+
+.modal{
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    /* overflow sert à conditionner le comportement des scroll bar
+    -visible pour juste les rendre visible même en débordant
+    -hidden cache ce qui dépasse l'écran
+    -scroll met des scroll bar automatiquement
+    -auto ne met les scrollbar que là où c'est nécessaire */
+    overflow: auto;
+    background-color: rgba(0,0,0,.8);
+    display: none;
+}
+
+.modal-content{
+    background: #f4f4f4;
+    margin: 10% auto;
+    width: 60%;
+    box-shadow: 0 5px 8px 0 rgb(0,0,0,0.2),0 7px 20px 0 rgb(0,0,0,0,0.2);
+    position: relative;
+    border-radius: 4px;
+    min-height: 500px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.modal-content-left{
+    background: #0F2027;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #2C5364, #203A43, #0F2027);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #2C5364, #203A43, #0F2027); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */    
+    border-radius: 3px 0 0 3px;
+    position: relative;
+}
+#modal-img{
+    width: 80%;
+    height: 80%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.close-btn{
+    position: absolute;
+    transition: 0.2s ease-out;
+    top: 2%;
+    right: 3%;
+    font-size: 2.5rem;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.close-btn:hover{
+    cursor: pointer;
+    color: var(--lightblue);
+    transition: 0.2s ease-out;
+}
+
+.modal-content-right{
+    border-radius: 0 3px 3px 0;
+    position: relative;
+    display: flex;
+    margin: 0 3rem 0 3rem;
+    justify-content: center;
+    gap: 3rem;
+    align-items: center;
+    flex-direction: column;
+    
+}
+
+.modal-content-right h1{
+    text-align: center;
+}
+
+.modal-form{
+    width: 100%;
+}
+
+.form-validation input{
+    color: var(--darkblue);
+    margin: 2rem 0 2rem;
+    background-color: #fff;
+    display: block;
+    padding-left: 0.5rem;
+    outline: none;
+    border: none;
+    height: 5rem;
+    width: 100%;
+    box-shadow: 1px 1px 1px rgba(0,0,0,0.05);
+}
+
+.modal-input{
+    display: block;
+    padding-left: 0.5rem;
+    outline: none;
+    border: none;
+    height: 2rem;
+    width: 100%;
+    box-shadow: 1px 1px 1px rgba(0,0,0,0.05);
+}
+
+.modal-input-btn{
+    width: 100%;
+    height: 4rem;
+    border-radius: 2px;
+    /* background-color: var(--lightblue); */
+    outline: none;
+    border: none;
+    font-size: 1.7rem;
+}
+
+.modal-content-right span{
+    text-align: center;
+    width: 100%;
+    margin: 3rem 0 0 0;
+    font-size: 1.5rem;
+}
+
+
+/* je ne savais pas qu'on pouvait target la placeholder comme ça c'est cool */
+.modal-input::placeholder{
+    color: var(--lightgray);
+}
+
+.modal-input-login{
+    font-size: 0.8rem;
+    margin-top: 1rem;
+    color: var(--lightgray);
+    width: 80%;
+    text-align: center;
+}
+
+.modal-input-login a{
+    text-decoration: none;
+    color: var(--brightred);
+    font-size: 600;
+}
+
+/* ############ HOME SECTION ########## */
+
+/* ############ HOME SECTION ########## */
+
+main{
+    margin: 7rem 0 0 0;
+}
+
+.wrapper .slide{
+    border-radius: 2rem;
+    height: 55rem;
+}
+
+.wrapper .slide1{
+    background: url("../images/home_pic1.jpg") no-repeat center/cover;
+}
+
+.wrapper .slide2 h1{
+    color: #fff;
+    font-size: 7rem;
+    font: bold;
+}
+
+.quotes h1, .quotes p{
+    user-select: none;
+}
+
+.slide2 .quotes2{  
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.wrapper .slide2 a{
+    font-size: 3rem;
+    font: bolder;
+    align-self: flex-start;
+}
+.wrapper .slide2{
+    background: url("../images/actu_canimg1.png") no-repeat center/cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.wrapper .slide3{
+    background: url("../images/actu_img2.png") no-repeat center/cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.wrapper .slide3 h1{
+    color: #fff;
+    font-size: 7rem;
+    font: bold;
+}
+
+.slide3 .quotes3{  
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.wrapper .slide3 a{
+    font-size: 3rem;
+    font: bolder;
+    align-self: flex-start;
+}
+
+/* -- swiper's added css */
+
+span.swiper-pagination-bullet-active{
+    background-color: var(--darkblue);
+}
+
+.swiper-button-prev::after,.swiper-button-next::after{
+    color: #fff;
+}
+
+.home-slider .slide{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 0 0 0 5%;
+}
+
+.home-slider .quotes{
+    /* padding: 8% 5% 0 5%; */
+    width: 65%;
+}
+
+.quotes h1{
+    font-size: 5.5rem;
+    font-family: 'Raleway', sans-serif;
+    font: 700;
+    color: var(--darkblue);
+}
+
+.quotes p{
+    font-size: 2rem;
+    padding-top: 2rem;
+}
+
+
+
+.booking-box-form select{
+    width: 10rem;
+    min-height: 3rem;
+    outline: none;
+    margin: 2rem;
+    padding-left: 5px;
+    cursor: pointer;
+}
+
+.booking-box-form{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.booking-box-title{
+    font-size: 3rem;
+}
+
+.booking-box label{
+    font-size: 2rem;
+    position: relative;
+    display: inline-block;
+}
+
+
+/* ############ DESTINATIONS SECTION ########## */
+
+.sub-heading{
+    text-align: center;
+    color: var(--lightblue);
+    font-size: 2rem;
+    padding-top: 1rem; 
+}
+
+.heading{
+    text-align: center;
+    color: var(--darkblue);
+    font-size: 3rem;
+    padding-bottom: 2rem;
+    text-transform: uppercase; 
+}
+
+.destinations .box-container{
+    display: grid;
+    /* ici minmax() retourne le plus gros des deux, donc ça permet ici de garantir que
+    les pistes font au minimum 27rem et au maximum la largeur idéale selon grid. */
+    grid-template-columns: repeat(auto-fit, minmax(28rem,1fr));
+    gap: 1.5rem;
+}
+
+.destinations .box-container .box{
+    padding: 2.5rem;
+    background: #fff;
+    border-radius: .5rem;
+    box-shadow: 0rem 1rem 20px 0px rgb(0 0 0 / 10%);
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+
+
+}
+
+.destinations .box-container .box .fa-heart,
+.destinations .box-container .box .fa-eye{
+    position: absolute;
+    top: 1.5rem;
+    border-radius: 50%;
+    height: 5rem;
+    width: 5rem;
+    line-height: 5rem;
+    line-height: 5rem;
+    font-size: 2rem;
+    color: var(--black);
+
+}
+
+.destinations .box-container .box .fa-heart:hover,
+.destinations .box-container .box .fa-eye:hover{
+    background: var(--lightblue);
+    color: #fff;
+}
+
+.destinations .box-container .box .fa-heart{
+    right: -15rem;
+}
+
+.destinations .box-container .box .fa-eye{
+    left: -15rem;
+}
+
+.destinations .box-container .box:hover .fa-heart{
+    right: 1.55rem;
+}
+
+.destinations .box-container .box:hover .fa-eye{
+    left: 1.5rem;
+}
+
+.destinations .box-container .box img{
+    height: 17rem;
+    width: 17rem;
+    margin: 1rem 0;
+    border-radius: 50%;
+}
+
+.destinations .box-container .box h3{
+    color: var(--black);
+    font-size: 2.5rem;
+}
+
+.destinations .box-container .box .stars{
+padding: 1rem 0;
+}
+
+.destinations .box-container .box .stars i{
+    font-size: 1.7rem;
+    color: var(--lightblue);
+}
+
+.destinations .box-container .box span{
+    color: var(--lightblue);
+    font-weight: bolder;
+    margin-right: 1rem;
+    font-size: 2.5rem;    
+}
+
+/* ############ ABOUT SECTION ########## */
+
+.about .row
+{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.about .row .image{
+    flex: 1 1 45rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.about .row .image img {
+    width: 50%;
+    height: 50%;
+    border-radius: 50%;
+
+}
+
+.about .row .content{
+    flex: 1 1 45rem;
+}
+
+.about .row .content h3{
+    color: var(--black);
+    font-size: 4rem;
+    padding: .5rem 0;
+    line-height: 1;
+}
+
+.about .row .content p{
+ color: var(--light-color);
+ font-size: 1.5rem;
+ padding: .5rem 0 ;
+ line-height: 2;
+}
+
+.about .row .content .icons-container{
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    padding: 1rem 0;
+    margin-top: .5rem;
+}
+
+.about .row .content .icons-container .icons{
+    background: #eee;
+    border-radius: .5rem;
+    border: .1rem solid rgba(0,0,0,.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    flex: 1 1 17rem;
+    padding: 1.5rem 1rem;
+}
+
+.about .row .content .icons-container .icons i{
+    font-size: 2.5rem;
+    color: var(--lightblue);
+}
+
+.about .row .content .icons-container .icons span{
+    font-size: 1.5rem;
+    color: var(--black);
+}
+
+/* ############ REVIEW SECTION ########## */
+
+.review .slide{
+    padding: 2rem;
+    box-shadow: var(--box-shadow);
+    border: .1rem solid rgba(0,0,0,.2);
+    border-radius: .5rem;
+    position: relative;
+    height: fit-content;
+}
+
+.review .slide .fa-quote-right{
+    position: absolute;
+    top: 2rem; right: 2rem;
+    font-size: 6rem;
+    color: #ccc;   
+}
+
+.review .slide p{
+    font-size: 1.5rem;
+}
+
+.review .slide .user{
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+    padding-bottom: 1.5rem;
+}
+
+.review .slide .user img{
+    height: 7rem;
+    width: 7rem;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.review .slide .user p{
+    font-size: 10px;
+}
+
+
+.review .slide .user h3{
+    color: var(--black);
+    font-size: 2rem;
+    padding-bottom: .5rem;
+}
+
+.review .slide .user i{
+    font-size: 1.3rem;
+    color: var(--lightblue);
+}
+
+.review .slide .p{
+    font-size: 1.5rem;
+    line-height: 1.8;
+    color: var(--light-color);
+}
+
+/* ############ newsletter SECTION ########## */
+
+.newsletter form{
+    max-width: 90rem;
+    border-radius: .5rem;
+    box-shadow: var(--box-shadow);
+    border: .1rem solid rgba(0,0,0,.2);
+    background: #fff;
+    padding: 1.5rem;
+    margin: 0 auto;
+}
+
+
+.newsletter form .inputBox{
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.newsletter form .inputBox .input{
+    width: 49%;
+}
+
+.newsletter form .inputBox .input span{
+    display: block;
+    padding: .5rem 0;
+    font-size: 1.5rem;
+    color: var(--light-color);
+}
+
+.newsletter form .inputBox .input input,
+.newsletter form .inputBox .input textarea{
+    background: #eee;
+    border-radius: .5rem;
+    padding: 1rem;
+    font-size: 1.6rem;
+    color: var(--black);
+    text-transform: none;
+    margin-bottom: 1rem;
+    width: 100%;
+}
+
+.newsletter form .inputBox .input input:focus,
+.newsletter form .inputBox .input textarea:focus{
+    border: .1rem solid var(--lightblue);
+
+}
+
+.newsletter form .inputBox .input textarea{
+    height: 20rem;
+    resize: none;
+}
+
+.newsletter form .btn{
+    margin-top: 0;
+}
+
+/* ############ FOOTER SECTION ########## */
+
+.footer .box-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+    gap: 1.5rem;
+        padding: 2rem 9%;
+}
+
+.footer .box-container .box h3{
+    padding: .5rem 0;
+    font-size: 2.5rem;
+    color: var(--black);
+}
+
+.footer .box-container .box a{
+    display: block;
+    padding: .5rem 0;
+    font-size: 1.5rem;
+    color: black;
+}
+
+.footer .box-container .box a:hover{
+    color: var(--lightblue);
+    text-decoration: underline;
+}
+
+.footer .credit{
+    text-align: center;
+    border-top: .1rem solid rgba(0,0,0,.1);
+    font-size: 2rem;
+    color: var(--black);
+    padding: .5rem;
+    padding-top: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.footer .credit span{
+    color: var(--lightblue);
+}
+
+/* ############ LOADER SECTION ########## */
+
+.loader-container{
+    position: fixed;
+    top: 0; left: 0;
+    height: 100vh;
+    width: 100vw;
+    z-index: 99999;
+    background-color: #3199da;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.loader-container img{
+    width: 35rem;
+}
+
+.loader-container.fade-out{
+    top: 110%;
+    display: none;
+}
+
+  /* ############ RESPONSIVENESS BREAKPOINTS ########## */
+
+  @media screen and (max-width: 1091px){
+    /* -- header responsiveness */
+    
+    /* La petite astuce pour légèrement tout rétrécir tu coco */
+    html{
+        font-size: 55%;
+    }
+
+    header{
+        /* élargit le menu */
+        padding: 1rem 2rem;
+    }
+
+     /* -- main section responsiveness */
+
+    section{
+        padding:2rem;
+    }
+
+    /* -- destinations section responsiveness */
+
+    .destinations .box-container .box img{
+        height: 20vw;
+        width: 20vw;
+    }
+
+    /* -- newsletter section responsiveness */
+
+    .newsletter form .inputBox .input{
+        width: 100%;
+    }
+
+  }
+
+  @media screen and (max-width: 878px){
+    /* -- header responsiveness */
+
+    /* La petite astuce pour légèrement tout rétrécir tu coco */
+
+    header .icons #menu-bars{
+        display: inline-block;
+    }
+
+    header .navbar{
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: #fff;
+        border-top: .1rem solid rgba(0,0,0,.2);
+        border-bottom: .1rem solid rgba(0,0,0,.2);
+        padding: 1rem;
+        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+    }
+
+    header .navbar.active{
+        clip-path: polygon(0 0, 100% 0,100% 100%, 0 100%);
+    }
+
+    header .navbar a{
+        display: block;
+        padding: 1.5rem;
+        margin: 1rem;
+        font-size: 2rem;
+        background-color: #eee;
+    }
+
+    /* login modal responsiveness */
+
+    .modal-content-left{
+        display: none;
+    }
+
+    .modal-content{
+        background: #f4f4f4;
+        margin: 10% auto;
+        width: 60%;
+        box-shadow: 0 5px 8px 0 rgb(0,0,0,0.2),0 7px 20px 0 rgb(0,0,0,0,0.2);
+        position: relative;
+        border-radius: 4px;
+        min-height: 500px;
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+
+    /* -- main section responsiveness */
+
+    /* -- home section responsiveness */
+
+    .quotes h1 {
+    font-size: 3rem;
+    }
+
+    .wrapper .slide3 h1{
+        font-size: 4rem;
+    }
+
+    .wrapper .slide2 h1{
+        font-size: 4rem;
+    }
+
+    .wrapper .slide3 a{
+        font-size: 2.3rem;
+    }
+
+    .wrapper .slide2 a{
+        font-size: 2.3rem;
+    }
+
+    .slide2 .quotes2{
+        display: flex;
+        justify-content: center;
+        gap: 3rem;
+    }
+
+    .slide3 .quotes3{
+        display: flex;
+        justify-content: center;
+        gap: 3rem;
+    }
+
+    .swiper-button-next::after,.swiper-button-prev::after{
+        display: none;
+    }
+
+    .quotes p{
+    font-size: 1.5rem;
+    }
+    
+    /* .home .home-slider .slide .content h3{
+        color: var(--black);
+        font-size: 5rem;
+    } */
+
+  }
+
+  @media screen and (max-width: 425px){
+    /* -- header responsiveness */
+
+    html{
+        font-size: 45%;
+    }
+
+    header .login .highlight-btn{
+        font-size: 1.7rem;
+        padding: .8rem 1rem;
+    }
+
+    header .profile-button{
+        font-size: 1.5rem;
+    }
+
+    header .log
+
+        /* login modal responsiveness */
+    
+        .modal-content{
+            width: 80%;
+        }
+
+            /* -- destinations section responsiveness */
+
+    .destinations .box-container .box img{
+        height: 40vw;
+        width: 40vw;
+    }
+
+     /* --- home section responsiveness */
+
+    .wrapper .slide2 a, .wrapper .slide3 a{
+        width: 32rem;
+    }
+
+    /* -- newsletter responsiveness */
+
+    .newsletter form .inputBox .input{
+        width: 100%;
+    }
+
+  }
+
+
+  /* ############ PAGE VOL.PHP ########## */
+
+  .vol-home .wrapper{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.vol-home{
+    background: url("../images/vol_pic1.jpg") center/cover;
+}
+
+/* ############ MENU SECTION ########## */
+
+.menu .box-container{
+
+    /* Ce bout de code est intéressant pour quand tu voudras avoir
+    du grid ez */
+    display: grid;
+    /* ici minmax() retourne le plus gros des deux, donc ça permet ici de garantir que
+    les pistes font au minimum 27rem et au maximum la largeur idéale selon grid. */
+    grid-template-columns: repeat(auto-fit, minmax(30rem,1fr));
+    gap: 1.5rem;
+}
+
+.menu .box-container .box{
+    background-color: #fff;
+    border: .1rem solid rgba(0,0,0,.2);
+    border-radius: .5rem;
+    box-shadow: 0rem 1rem 20px 0px rgb(0 0 0 / 10%);
+}
+
+.menu .box-container .box .image{
+    height: 25rem;
+    width: 100%;
+    padding: 1.5rem;
+    overflow: hidden;
+    position: relative;
+}
+
+.menu .box-container .box .image img{
+    height: inherit;
+    width: 100%;
+    border-radius: .5rem;
+}
+
+.menu .box-container .box .image .fa-heart{
+    position: absolute;
+    top: 2.5rem;
+    right: 2.5rem;
+    height: 5rem;
+    width: 5rem;
+    line-height: 5rem;
+    text-align: center;
+    font-size: 2rem;
+    background-color: #fff;
+    border-radius: 50%;
+    color: var(--black);
+}
+
+.menu .box-container .box .image .fa-heart:hover{
+    background-color: var(--green);
+    color: #fff;
+}
+
+.menu .box-container .box .content{
+    padding: 2rem;
+    padding-top: 0;
+}
+
+.menu .box-container .box .content .stars{
+    padding: 2rem 0 1rem 0;
+}
+
+.menu .box-container .box .content .stars i{
+    font-size: 1.7rem;
+    color: var(--green);
+}
+
+.menu .box-container .box .content h3{
+    color: var(--black);
+    font-size: 1.5rem;
+}
+
+.menu .box-container .box .content .dates,.menu .box-container .box .content .classes{
+    text-align: end;
+}
+
+.menu .box-container .box .content p{
+    color: var(--light-color);
+    font-size: 1.6rem;
+    padding: .5rem 0;
+    line-height: 1.5rem;
+}
+
+.menu .box-container .box .content .pice{
+    color: var(--green);
+    margin-top: 2rem;
+    margin-left: 1rem;
+    font-size: 2.5rem;
+    font-weight: bolder;
+}
+
+.menu .box-container .box .content .prix{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.menu .box-container .box .content .prix p{
+    text-align: end;
+    color: var(--green);
+}
+
+/* ############ MENU SECTION ########## */
+
+.dashboard-home{
+    background: url("../images/vol_pic1.jpg") no-repeat center/cover;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+
+.more{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dashboard-home .wrapper .profile-edit{
+    background: rgba(0,0,0,.8);
+    border-radius: 5rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    padding: 2rem;
+    gap: 2rem;
+}
+
+.delete-btn{
+    background-color: rgba(255, 0, 0, 0.539);
+    text-align: center;
+    color: white;
+}
+
+.profile-edit .infos{
+    font-size: 2rem;
+    color: white;
+    text-align: center;
+    line-height: 3;
+}
+.profile-edit .infos span{
+    font-size: 2rem;
+    font-weight: bolder;
+    color: var(--lightblue);
+}
+
+.profile-edit .buttons{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.buttons .delete-btn{
+    font-size: 1.7rem;
+    width: 100%;
+}
+
+.delete-btn:hover{
+    background-color: rgba(0, 42, 255, 0.894);
+    color: white;
+}
+
+.profile-edit img{
+    height: 30rem;
+    /* margin: 10rem; */
+}
+
+  /* ############ RESERVATION PAGE ########## */
+
+.home-booking{
+    background: url('../images/vol_pic1.jpg') center/cover no-repeat;
+}
+
+.home-booking .wrapper{
+    background: #f4f4f4;
+    margin: 10% auto;
+    width: 60%;
+    box-shadow: 0 5px 8px 0 rgb(0,0,0,0.2),0 7px 20px 0 rgb(0,0,0,0,0.2);
+    position: relative;
+    border-radius: 4px;
+    min-height: 500px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.home-booking .wrapper .content-left img{
+    height: 25rem;
+}
+
+.home-booking .wrapper .content-left{
+    background-color: #0F2027;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.home-booking .wrapper .content-right{
+    background-color: #fff;
+}
+
+.wrapper .content-left{
+    background: #0F2027;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #2C5364, #203A43, #0F2027);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #2C5364, #203A43, #0F2027); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */    
+    border-radius: 3px 0 0 3px;
+    position: relative;
+}
+
+.content-left img{
+    width: 80%;
+    height: 80%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.modal-content-right{
+    border-radius: 0 3px 3px 0;
+    position: relative;
+    display: flex;
+    margin: 0 3rem 0 3rem;
+    justify-content: center;
+    gap: 3rem;
+    align-items: center;
+    flex-direction: column;
+    
+}
+
+.modal-content-right h1{
+    text-align: center;
+}
+
+.modal-form{
+    width: 100%;
+}
+
+.home-booking .wrapper .content-right{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5rem;
+}
+
+  /* ############ INSCRIPTION PAGE ########## */
+
+.alert{
+padding: 1.5rem;
+border-radius: 5px;
+font-size: 1.5rem;
+color: white;
+margin: 1rem 0;
+}
+
+.alert-danger {
+    background-color: #fc5555;
+}
+
+.alert-info {
+    background-color: var(--lightblue);
+}
+
+.home-booking .content-right .form-validation .modal-input{
+    background: #26709040;
+    border-radius: 2rem;
+    text-align: center;
+}
+
+.home-booking .content-right .form-validation label{
+    font-size: 2rem;
+}
+
+.booking-box {
+    display: flex;
+   justify-content: center;
+   flex-direction: column;
+   gap: .2rem;
+   flex-wrap: wrap;
+   padding: 1.5rem;
+   background: rgba(255, 255, 255, 0.289);
+   backdrop-filter: blur(5px);
+   border-radius: 2rem;
+   box-shadow: 6px 6px 20px 0px;
+   width: 95%;
+}
+
+/* Ces classes permettent d'afficher les messages d'erreurs et de validation */
+.alert {    
+    padding: 1rem;
+    border-radius: 5px;
+    color: white;
+    margin: -1rem .5rem 0 0;
+}
+
+.alert-success {
+    background-color: #42ba96;
+}
+
+.alert-danger {
+    background-color: #fc5555;
+}
+
+.alert-info {
+    background-color: #2E9AFE;
+}
+
+.alert-warning {
+    background-color: #ff9966;
+}
+
+#welcome,#danger,#dangerous{
+    text-align: center;
+    margin: 2rem 0;
+    width: 100%;
+}
